@@ -1,5 +1,12 @@
 # Import Streamlit to create the web interface
-import streamlit as st
+import importlib
+
+try:
+    st = importlib.import_module("streamlit")
+except ImportError as exc:
+    raise RuntimeError(
+        "Streamlit is not installed. Install it with `python -m pip install streamlit`."
+    ) from exc
 
 # Import OpenCV to read and process video files
 import cv2
